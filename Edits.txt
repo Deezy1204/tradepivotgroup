@@ -1,0 +1,4 @@
+Okay so dealing with the hero page animation and transition, when i start scrollingn down i need to see a strutcure of a buling construction also slowly scroll up and sart appearing, coming up covering the text: Tradepivot.
+Architecture | Civil Engineering | Construction, then scroll down into hiding when i scroll up
+
+The text extracted by chatgpt has been altered make sure you reextract this time with specific clear instruction nothing is to be changed
