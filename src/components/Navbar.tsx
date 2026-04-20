@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? 'py-4 bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border-subtle)]' : 'py-8 bg-transparent'
+        (scrolled || isOpen) ? 'py-4 bg-background border-b border-[var(--border-subtle)]' : 'py-8 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-8 md:px-12 flex items-center justify-between">
@@ -81,12 +81,12 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
-          className="lg:hidden text-[var(--foreground)]"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="flex lg:hidden items-center gap-4 text-[var(--foreground)]">
+            <ThemeToggle />
+            <button onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -96,7 +96,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 top-[80px] bg-black z-40 lg:hidden flex flex-col p-12 gap-8"
+            className="fixed inset-0 top-[80px] bg-background z-40 lg:hidden flex flex-col p-12 gap-8"
           >
             {navLinks.map((link) => (
               <a

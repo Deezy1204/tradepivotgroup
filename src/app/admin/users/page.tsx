@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { db } from '@/lib/firebase';
-import { collection, getDocs, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
+// import { db } from '@/lib/firebase';
+// import { collection, getDocs, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { Users, Shield, Trash2, Mail, Clock } from 'lucide-react';
 
 interface AdminUser {
@@ -22,6 +22,19 @@ export default function UserManagement() {
 
   const fetchUsers = async () => {
     setLoading(true);
+    // MOCK DATA INSTEAD OF FIREBASE
+    setTimeout(() => {
+        if (users.length === 0) {
+            setUsers([
+                { id: 'usr-1', email: 'nkezieprosper@gmail.com', role: 'Super Admin', createdAt: new Date().toISOString() },
+                { id: 'usr-2', email: 'admin@gmail.com', role: 'Editor', createdAt: new Date().toISOString() }
+            ]);
+        }
+        setLoading(false);
+    }, 1000);
+
+    /*
+    // REAL FIREBASE LOGIC
     try {
       const q = query(collection(db, "users"), orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
@@ -32,20 +45,28 @@ export default function UserManagement() {
     } finally {
       setLoading(false);
     }
+    */
   };
 
   const handleDelete = async (id: string, email: string) => {
-    if (email === "nkezieprosper@gmail.com") {
+    if (email === "nkezieprosper@gmail.com" || email === "admin@gmail.com") {
         alert("The primary administrator account cannot be deleted.");
         return;
     }
     if (!confirm(`Revoke access for ${email}?`)) return;
+    
+    // MOCK DELETE LOGIC
+    setUsers(users.filter(u => u.id !== id));
+
+    /*
+    // REAL FIREBASE LOGIC
     try {
       await deleteDoc(doc(db, "users", id));
       fetchUsers();
     } catch (err) {
       console.error(err);
     }
+    */
   };
 
   return (

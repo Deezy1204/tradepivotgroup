@@ -13,13 +13,13 @@ const team = [
   {
     name: "James Ndachengedzwa",
     role: "Operations Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
+    image: "",
     details: "Strategic operations and logistics specialist."
   },
   {
     name: "Mabutho Moyo",
     role: "Operations Director",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2187&auto=format&fit=crop",
+    image: "",
     details: "Expert in construction assessment and project delivery."
   },
   {
@@ -58,14 +58,19 @@ export default function Leadership() {
                     viewport={{ once: true, margin: "50px" }}
                     className="group flex flex-col items-start"
                 >
-                    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl mb-8 bg-[var(--card-bg)]">
-                        <Image 
-                            src={member.image} 
-                            alt={member.name} 
-                            fill 
-                            className="object-cover group-hover:scale-105 transition-all duration-1000" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative aspect-square w-full mb-6 overflow-hidden bg-silver-primary/10 rounded-2xl flex items-center justify-center">
+                        {member.image ? (
+                            <Image 
+                                src={member.image} 
+                                alt={member.name} 
+                                fill 
+                                className="object-cover transition-all duration-700" 
+                            />
+                        ) : (
+                            <div className="text-silver-primary text-[10px] font-black uppercase tracking-widest text-center opacity-50 px-4">
+                                Image Restricted
+                            </div>
+                        )}
                     </div>
 
                     <div className="flex flex-col gap-2">

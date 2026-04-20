@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/context/ThemeContext";
 import { AuthProvider } from "@/context/AuthContext";
+import WhatsAppFAB from "@/components/WhatsAppFAB";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </AuthProvider>
+        <WhatsAppFAB />
       </body>
     </html>
   );

@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY || "re_bFRq5YC6_CwpAirz4VL9UdoxCaf8y3QXB");
 
 export async function POST(req: Request) {
   try {
@@ -12,21 +15,9 @@ export async function POST(req: Request) {
       );
     }
 
-    /* 
-    =======================================================
-    RESEND INTEGRATION - To be enabled when domain is ready
-    =======================================================
-    
-    1. npm install resend
-    2. Add RESEND_API_KEY to your .env.local
-    3. Uncomment the code below:
-
-    import { Resend } from 'resend';
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
     const { data, error } = await resend.emails.send({
-      from: 'TradePivot Contact Form <onboarding@resend.dev>', // Update this to your verified domain later
-      to: ['your-email@example.com'], // Update to your recipient email
+      from: 'TradePivot <info@tradepivotgroup.com>',
+      to: ['info@tradepivotgroup.com'],
       subject: `New Inquiry from ${name}: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -42,13 +33,9 @@ export async function POST(req: Request) {
     if (error) {
        return NextResponse.json({ error: error.message }, { status: 400 });
     }
-    */
-
-    // MOCK RESPONSE: Simulate network delay for the sophisticated UI loading effect
-    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     return NextResponse.json(
-      { success: true, message: 'Message sent successfully (MOCK)' },
+      { success: true, message: 'Message sent securely via Resend.' },
       { status: 200 }
     );
   } catch (error) {

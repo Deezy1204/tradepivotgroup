@@ -95,7 +95,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="text-[9px] uppercase font-black text-[var(--text-muted)]">Call Us</div>
-                  <a href="tel:+263789093157" className="text-[13px] font-black text-[var(--foreground)]">+263 78 909 3157</a>
+                  <a href="tel:+263789366969" className="text-[13px] font-black text-[var(--foreground)]">+263 78 936 6969</a>
                 </div>
               </div>
               <div className="flex items-center gap-4 group">
@@ -104,7 +104,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="text-[9px] uppercase font-black text-[var(--text-muted)]">Email Address</div>
-                  <a href="mailto:info@tradepivot.co.zw" className="text-[13px] font-black text-[var(--foreground)]">info@tradepivot.co.zw</a>
+                  <a href="mailto:info@tradepivotgroup.com" className="text-[13px] font-black text-[var(--foreground)]">info@tradepivotgroup.com</a>
                 </div>
               </div>
             </div>
